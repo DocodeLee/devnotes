@@ -23,3 +23,4 @@ Code	Output
 
 #  we can divide up our code into reusable parts called functions.
 # It is possible to have both local and global variables with the same name. When you do this, the local variable takes precedence over the global variable.
+# Note: Boolean values are never written with quotes. The strings "true" and "false" are not Boolean and have no special meaning in JavaScript.
