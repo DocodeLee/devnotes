@@ -63,3 +63,5 @@ function Bird(name, color) {
   this.color = color;
   this.numLegs = 2;
 }
+
+# A mixin allows other objects to use a collection of functions.
