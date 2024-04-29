@@ -68,3 +68,6 @@ function Bird(name, color) {
 
 #if you want to split as a alphabet use split(""), word split(" ")
 join("") will gain all together in the array.
+
+#If you want setup the function operate, do the wrap syntax
+ex_ button.onclick = () => function()
