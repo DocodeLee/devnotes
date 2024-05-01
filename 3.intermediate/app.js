@@ -205,3 +205,114 @@
 // ];
 // const long = words.filter((word) => word.length >= 8);
 // console.log(long);
+
+//find()
+// const res = peoples.find((person)=> person.name === "alex");
+// in the peoples(obj) find the element which has name "alex"
+// const ages = [3, 10, 18, 20];
+// const adult = ages.find((ss) => ss > 18);
+// console.log(adult);
+// find only find one above, but filter find all
+
+//every() only true when all ele is true
+//some() true when only one is true
+// let products = [
+//   { name: "checker", category: "Toys" },
+//   { name: "Harry potter", category: "Books" },
+//   { name: "iphone", category: "Electronics" },
+//   { name: "LearnPhp", category: "Books" },
+// ];
+// let allProductsBooks = products.every(
+//   (product) => product.category === "Books"
+// );
+// let someProductsBooks = products.some((tt) => tt.category === "Books");
+// console.log(allProductsBooks);
+// console.log(someProductsBooks);
+
+//reduce()
+// const numbers = [1, 2, 3, 4, 5];
+// const sum = numbers.reduce((p, c) => {
+//   console.log(`pre: ${p}`);
+//   console.log(`cur: ${c}`);
+//   return p + c;
+// }, 0); //zero behind the comma is default for previous para
+
+// const peoples = [
+//   { name: "a", age: 15 },
+//   { name: "b", age: 14 },
+//   { name: "c", age: 32 },
+//   { name: "d", age: 33 },
+//   { name: "e", age: 59 },
+// ];
+// const oldestAge = peoples.reduce((p, c) => (c.age > p ? c.age : p), 0);
+//if c.age is bigger than p, c.age will be exchanged to p
+// const words = ["apple", "apple", "banana", "apple", "pineapple", "apple"];
+// const wordFrequency = words.reduce((frequencyMap, word) => {
+//   frequencyMap[word] = frequencyMap[word] || 0 + 1;
+//   return frequencyMap;
+// }, {}); //{} behind comma mean the first value
+// console.log(wordFrequency);
+
+// const numbers = [2, 3, 4, 5];
+// const product = calculateProduct(numbers);
+
+// function calculateProduct(arr) {
+//   return arr.reduce((p, c) => p * c);
+// }
+
+// console.log(calculateProduct(numbers));
+
+//Map
+//built in data structure. similar with object
+//Object: key is limited into string and symbol
+//Map's key can be anytype
+//Map has order but objects key doesn't
+
+// const map = new Map();
+
+// const keyOne = "abc";
+// const keyTwo = {};
+// const keyThree = function () {};
+// map.set(keyOne, "Value of key 1"); // in objects keyOne becomes Value of key1
+// map.set(keyTwo, "value of obj");
+// map.set(keyThree, "func name");
+// // map.keys();
+// // map.delete();
+// // map.values(keyTwo);
+// // console.log(map.size); //size is not a function
+
+// for (let value of map.keys()) {
+//   console.log(value);
+// }
+
+// const map = new Map();
+// const keyOne = "a";
+// const keyTwo = "b";
+// const keyThree = "C";
+// map.set("a", 1);
+// map.set("b", 2);
+// map.set("c", 3);
+// console.log(map.get("a"));
+// console.log(map.size);
+// console.log(map.delete("b"));
+// console.log(map);
+
+//Set (unique array)
+// const initialValues = [1, 2,2,2,2,2, 3];
+// const mySet = new Set(initialValues);
+// console.log(mySet); // output {1,2,3} set exclude same result
+
+//mySet.add() . mySet.has("???")
+
+//Symbol :unique and imutable , primitive data type
+// Symbol() // identifier or object properties
+
+// const symbol1 = Symbol("foo");
+// console.log(typeof symbol1);
+// const obj1 = {};
+// console.log(typeof obj1);
+// obj1[0] = symbol1; // key: 0 value = symbol1
+// obj1[symbol1] = "Key became the symbol1";
+// console.log(obj1);
+
+//DOM : Document Object Model
