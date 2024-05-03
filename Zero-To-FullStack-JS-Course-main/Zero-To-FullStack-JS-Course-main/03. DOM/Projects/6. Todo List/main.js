@@ -1,23 +1,24 @@
+//Get element from the DOM
 let form = document.querySelector("form");
 let input = document.querySelector("input");
 let todos = document.querySelector(".todos");
 
 function getTodo(value) {
-  // Creating New Elements
+  //creating new elements
   let todo = document.createElement("div");
   let textEl = document.createElement("span");
 
-  // Setting values & Styles
+  //setting values & styles
   textEl.innerHTML = value;
 
-  // Appending Our Element To The DOM
+  //append our element to the DOM
   todo.appendChild(textEl);
 
   let closeEl = document.createElement("span");
   closeEl.innerHTML = "&times;";
   closeEl.classList.add("delete");
 
-  // Attaching Events
+  //Attach Events
   closeEl.addEventListener("click", function (e) {
     todos.removeChild(todo);
   });
@@ -28,7 +29,6 @@ function getTodo(value) {
 }
 
 form.addEventListener("submit", (e) => {
-  // preventing the default behavior
   e.preventDefault();
   let value = input.value;
   if (!value.trim()) return;
