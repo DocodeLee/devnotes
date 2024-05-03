@@ -1,21 +1,17 @@
-// Getting Elements From The DOM
 const btns = document.querySelectorAll(".btn");
 const body = document.body;
-// console.log(btns);
 
-// Iterating over all buttons
 btns.forEach((btn) => {
   btn.addEventListener("click", () => {
-    number = btn.value;
-    changeBackground(number);
+    color = btn.value;
+    changeBackground(color);
   });
 });
 
-function changeBackground(number) {
-  // console.log(number);
+function changeBackground(color) {
   body.className = "";
 
-  switch (number) {
+  switch (color) {
     case "purple":
       body.classList.add("purple");
       break;
