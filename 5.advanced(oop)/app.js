@@ -156,23 +156,23 @@
 // console.log(typeof arr1);
 
 //Object.create()
-let person = {
-  greet: function () {
-    console.log(`Hello i am ${this.firstName} ${this.lastName}`);
-  },
-};
+// let person = {
+//   greet: function () {
+//     console.log(`Hello i am ${this.firstName} ${this.lastName}`);
+//   },
+// };
 
-const lee = Object.create(person);
-lee.firstName = "Lee";
-lee.lastName = "Ming";
-lee.greet();
+// const lee = Object.create(person);
+// lee.firstName = "Lee";
+// lee.lastName = "Ming";
+// lee.greet();
 
-let john = Object.create(person, {
-  firstName: { value: "John" },
-  lastName: { value: "Doe" },
-});
+// let john = Object.create(person, {
+//   firstName: { value: "John" },
+//   lastName: { value: "Doe" },
+// });
 
-john.greet();
+// john.greet();
 
 //Every js object has anonymous property called prototype
 // Remeber function and array is also object
@@ -181,6 +181,380 @@ john.greet();
 //2.   obj.constructor.prototype
 //3. Object.getProtoTypeOf(a)
 
-const obj = {};
+// Array.prototype.pop = function () {
+//   return "pop it up";
+// };
+// const myArr = ["one", "two", "three"];
+// console.log(myArr.pop());
+//-------------------------
 
-//12:42:56
+// String.prototype.hello = function () {
+//   console.log(this);
+//   console.log(this.toUpperCase());
+// };
+// console.log("hello and wellcome".hello());
+
+// const arr = ["hello", "yellow", "bla"];
+// console.log(arr);
+
+//-------------------------------prototypal inheritance
+// function Animal(name) {
+//   this.name = name;
+// }
+// Animal.prototype.sound = function () {
+//   return "Animal sound";
+// };
+// const animal1 = new Animal("Frog");
+// console.log(animal1); //in sound it has function
+
+// function Dog(name, breed) {
+//   Animal.call(this, name); // call the animal and set the name into Animal
+//   this.breed = breed;
+// }
+// // Object.create() method creates a new object,
+// Dog.prototype = Object.create(Animal.prototype); // Dog prototype = Animal prototype
+
+// Dog.prototype.bark = function () {
+//   return "woof!";
+// };
+
+// const dog1 = new Dog("Buddy", "Genius");
+// console.log(dog1); //no sound in this object
+// console.log(dog1.bark());
+
+//-----CLasses--------------
+// you can create object from the class
+
+// Class Declaration
+// class Person {
+//   constructor(firstName, lastName, age) {
+//     //instance Members
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//     this.age = age;
+//     this.printUserInfo = function () {
+//       return `Name : ${this.firstName} ${this.lastName}, Age: ${this.age}`;
+//     };
+//   }
+//   // outside the constructor set the prototypes
+//   greet() {
+//     return `Hello there`;
+//   }
+// }
+// // classes utilize
+// class Programmer extends Person {
+//   constructor(firstName, lastName, age, pl, exp) {
+//     super(firstName, lastName, age); //this just calls the parent call constructor
+//     this.pl = pl;
+//     this.exp = exp;
+//   }
+// }
+
+// const john = new Person("John", "Dev", 11);
+// console.log(john);
+// console.log(john.greet()); //call the prototype
+
+// const lee = new Programmer("Lee", "sw", 25, "JS", 12);
+// console.log(lee);
+// console.log(lee.greet());
+
+// class Hero {
+//   constructor(name, level) {
+//     this.name = name;
+//     this.level = level;
+//   }
+//   greet() {
+//     return "Hi";
+//   }
+// }
+// const hero = new Hero("hurk", 10);
+// class Mego extends Hero {
+//   constructor(name, level, spell) {
+//     super(name, level);
+//     this.spell = spell;
+//   }
+// }
+// const harry = new Mego("Harry", 123, "Abracadabra");
+// console.log(harry);
+
+//Modifiers
+//{private, public,protected} has differnece in availability
+//protected only can access in class
+// //Other lang has public, private protected but Js not lol
+
+// function MyClass(publicField, privateField, protectedField) {
+//   //Public field
+//   this.publicField = publicField;
+
+//   //Private Field(closure) (_ means protected in JS)
+//   const _privateField = privateField;
+//   //Protected Field
+//   const _protectedField = protectedField;
+
+//   //Public Method
+//   this.publicMethod = function () {
+//     return `Public ${this.publicField}`;
+//   };
+//   // private Method (closure)
+//   function _priavteMethod() {
+//     return `Private : ${_privateField}`;
+//   }
+//   //Protected Method(closure)
+//   function _protectedMethod() {
+//     return `Protected: ${_protectedField}`;
+//   }
+//   //Method to access protected method
+//   this.accessProtectedMethod = function () {
+//     return _protectedMethod();
+
+//   };
+// }
+
+// const myObject = new MyClass("Public Data", "Private Data", "Protected Data");
+// // console.log(myObject.publicField);
+// // console.log(myObject._privateField);
+// // console.log(myObject._protectedField);
+// // console.log(myObject.publicMethod());
+// // console.log(myObject._priavteMethod()); // showing error
+// // console.log(myObject._protectedMethod()); //error
+// console.log(myObject.accessProtectedMethod());
+
+//Encapsulation
+// hide the variable using closure
+// function Counter() {
+//   let _count = 0; //private variable
+
+//   // Public Method that access and modify the private variable
+//   // user only use method not directly var
+//   this.increment = function () {
+//     _count++;
+//   };
+
+//   this.decrement = function () {
+//     _count--;
+//   };
+//   this.getCount = function () {
+//     return _count;
+//   };
+// }
+
+// const counter = new Counter();
+// console.log(counter.getCount());
+
+// counter.increment();
+// counter.increment();
+// console.log(counter.getCount());
+
+//-----------------------------
+// Abstract class (providing a blueprint for subclasses)
+
+// setting the parent class
+// class Animal {
+//   constructor(name) {
+//     this.name = name;
+//   }
+//   //Abstract method (to be implemented by subclasses)
+//   makeSound() {
+//     throw new Error("Method(makesound) must be implemented");
+//   }
+// }
+// // in the children you can change the implemented func
+// class Dog extends Animal {
+//   constructor(name) {
+//     super(name);
+//   }
+//   //implementin the abstract method
+//   makeSound() {
+//     return "Woof";
+//   }
+// }
+
+// //concrete subclass
+// class Cat extends Animal {
+//   constructor(name) {
+//     super(name);
+//   }
+//   makeSound() {
+//     return "Meow";
+//   }
+// }
+
+// const dog = new Dog("Buddy");
+// console.log(dog.name);
+// console.log(dog.makeSound());
+
+// const cat = new Cat("Whis");
+// console.log(cat.name);
+// console.log(cat.makeSound());
+
+//----------INHERITANCE------------
+// ///ES5 ver
+// function Animal(name) {
+//   this.name = name;
+// }
+
+// // method shared among all animal inheritances
+// Animal.prototype.makeSound = function () {
+//   return "Unknown sounds";
+// };
+
+// // Subclass constructor inheriting from Animal
+// function Dog(name) {
+//   Animal.call(this, name); // call the superclass constructor
+// }
+// //setup prototype chain for Dog to inherit from animal
+
+// Dog.prototype = Object.create(Animal.prototype);
+
+// // Method specific to Dog
+// Dog.prototype.makeSound = function () {
+//   return "woof";
+// };
+
+// //creating Instances of the classes
+// const genericAnimal = new Animal("Generic Animal");
+// console.log(genericAnimal.name);
+// console.log(genericAnimal.makeSound());
+// const dog = new Dog("Buddy");
+// console.log(dog);
+
+//ES 6 ver
+// class Animal {
+//   constructor(name) {
+//     this.name = name;
+//   }
+//   makeSound() {
+//     return "Unkown sounds";
+//   }
+// }
+
+// //subclass inheriting from Animal
+// class Dog extends Animal {
+//   constructor(name) {
+//     super(name);
+//   }
+//   makeSound() {
+//     return "Woof";
+//   }
+// }
+
+// const newani = new Animal("General Animal");
+// console.log(newani.makeSound());
+// const dog2 = new Dog("dd");
+// console.log(dog2.makeSound());
+
+//Polymorphism-----------------------
+
+//super class
+// class Animal {
+//   constructor(name) {
+//     this.name = name;
+//   }
+//   makeSound() {
+//     return "Unknown Sound";
+//   }
+// }
+
+// class Dog extends Animal {
+//   constructor(name) {
+//     super(name);
+//   }
+//   // overriding method
+//   makeSound() {
+//     return "Woof";
+//   }
+// }
+// class Cat extends Animal {
+//   constructor(name) {
+//     super(name);
+//   }
+//   makeSound() {
+//     return "Meow";
+//   }
+// }
+
+// function animalInfo(animal) {
+//   console.log(`Name : ${animal.name}`);
+//   console.log(`Sound: ${animal.makeSound()}`);
+// }
+
+// const genericAnimal = new Animal("Generic Animal");
+// animalInfo(genericAnimal);
+
+// const dog = new Dog("Buddy");
+// animalInfo(dog);
+
+// Synchronous----------------------------------------------
+//using the var in the next step's parameter
+
+// function myFunc() {
+//   console.log("Inside func");
+// }
+// console.log("Start");
+// myFunc();
+// console.log("End");
+
+// //Asynchronous---------------------------------------------
+// console.log("Start");
+// setTimeout(() => {
+//   console.log("inside setTimeOut");
+// }, 2000);
+// console.log("End");
+
+//call Back Hell
+
+// function callbackHell(callback) {
+//   setTimeout(() => {
+//     const data = "inside callbackhell";
+//     console.log(data);
+//     callback(data);
+//   }, 2000);
+// }
+// function firstFunc(data, callback) {
+//   setTimeout(() => {
+//     const processedData = `${data} - Processed First`;
+//     console.log(`Inside(firstfunc) Func`);
+//     callback(processedData);
+//   }, 1000);
+// }
+// function secondFunc(data, callback) {
+//   setTimeout(() => {
+//     const processedData = `${data} - processed Second`;
+//     console.log(`Inside (secondFunc) func`);
+//     callback(processedData);
+//   }, 1500);
+// }
+// Callback Hell
+// callbackHell((data) => {
+//   firstFunc(data, (processedData1) => {
+//     secondFunc(processedData1, (processedData2) => {
+//       console.log(`final result of all function, ${processedData2}`);
+//     });
+//   });
+// });
+
+//Callback is not always asynchronous
+// console.log("Start");
+// const nums = [1, 2, 3, 4, 5];
+// nums.forEach((n) => console.log(n));
+// console.log("End");
+console.log("Start");
+function getUserDataFromDB(name, callback) {
+  setTimeout(() => {
+    console.log(`Getting user name`);
+    callback(name);
+  }, 2000);
+}
+function getUserHobbies(name, callback) {
+  setTimeout(() => {
+    console.log(`Hobbies : `);
+    callback(["football", "reading", "singing"]);
+  }, 2000);
+}
+getUserDataFromDB("lee", (data) => {
+  console.log(data);
+  getUserHobbies(data, (hobby) => {
+    console.log(hobby);
+  });
+});
+console.log("End");
