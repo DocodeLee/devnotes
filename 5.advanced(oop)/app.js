@@ -538,23 +538,305 @@
 // const nums = [1, 2, 3, 4, 5];
 // nums.forEach((n) => console.log(n));
 // console.log("End");
-console.log("Start");
-function getUserDataFromDB(name, callback) {
-  setTimeout(() => {
-    console.log(`Getting user name`);
-    callback(name);
-  }, 2000);
+// console.log("Start");
+// function getUserDataFromDB(name, callback) {
+//   setTimeout(() => {
+//     console.log(`Getting user name`);
+//     callback(name);
+//   }, 2000);
+// }
+// function getUserHobbies(name, callback) {
+//   setTimeout(() => {
+//     console.log(`Hobbies : `);
+//     callback(["football", "reading", "singing"]);
+//   }, 2000);
+// }
+// getUserDataFromDB("lee", (data) => {
+//   console.log(data);
+//   getUserHobbies(data, (hobby) => {
+//     console.log(hobby);
+//   });
+// });
+// console.log("End");
+
+// Promise
+//.then(onFulfilled,onRejected)
+//.catch()with only rejected case
+
+// const promiseObj = new Promise((resolve, reject) => {
+//   let req = false;
+//   req == true ? resolve("Request Successful") : reject("Request Rejected");
+// })
+//   .then((value) => console.log(value))
+//   .catch((error) => console.log(error));
+
+// function checkNumber(number) {
+//   return new Promise((resolve, reject) => {
+//     if (number % 2 == 0) {
+//       resolve(`${number}is an even number.`);
+//     } else {
+//       reject(`${number}is an odd number.`);
+//     }
+//   });
+// }
+
+// const numberTocheck = 7;
+// checkNumber(numberTocheck)
+//   .then((message) => {
+//     console.log(`Success: ${message}`);
+//   })
+//   .catch((error) => {
+//     console.log(`Error :${error}`);
+//   });
+
+//callback promise
+
+// function callbackHell() {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       const data = "inside (callback Hell)";
+//       console.log(data);
+//       resolve(data);
+//     }, 2000);
+//   });
+// }
+
+// function firstFunc(data) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       const processedData = `${data} - processed data`;
+//       console.log("Inside (firstfunc function");
+//       resolve(processedData);
+//     }, 2000);
+//   });
+// }
+
+// function secondFunc(data) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       const processedData = `${data} - processed data`;
+//       console.log("Inside (secondFunc) function");
+//       resolve(processedData);
+//     }, 1500);
+//   });
+// }
+// callbackHell()
+//   .then((data) => firstFunc(data))
+//   .then((processedData1) => secondFunc(processedData1))
+//   .then((processedData2) =>
+//     console.log(`Final result with promise : ${processedData2}`)
+//   )
+//   .catch((error) => console.log(`Error: ${error}`));
+
+//-----------------callbackhell w/ promise
+
+// console.log("Start");
+
+// function getuserDataFromDB(name, callback) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       console.log("Getting user Name");
+//       resolve(name); //instead of callback use resolve
+//     }, 2000);
+//   });
+// }
+// function getUserHobbies(name, callback) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       console.log("Getting user hobbies...");
+//       resolve(["Reading", "Game", "Code"]); //instead of callback use resolve
+//     }, 2000);
+//   });
+// }
+// // getuserDataFromDB("Lee", (data) => {
+// //   console.log(data);
+// //   getUserHobbies(data, (hobby) => console.log(hobby));
+// // });
+
+// getuserDataFromDB("lee")
+//   .then((name) => getUserHobbies(name))
+//   .then((hobby) => console.log(hobby))
+//   .catch((err) => console.log(err));
+
+// console.log("End");
+
+//-------------------asyn---------------------------------
+// function fetchDataFromServer() {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve("User data retrieved from the server");
+//     }, 4000);
+//   });
+// }
+// async function getUserData() {
+//   try {
+//     const data = await fetchDataFromServer();
+//     console.log(data);
+//     console.log("Remaining tasks can be executed here");
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+// getUserData().then().catch();
+
+// function callbackHell() {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       const data = `inside (callbackhell) function`;
+//       console.log(data);
+//       resolve(data);
+//     }, 2000);
+//   });
+// }
+// function firstFunc(data) {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       const processedData = `${data} - processed first`;
+//       console.log("inside the first func");
+//       resolve(processedData);
+//     });
+//   });
+// }
+
+// function secondFunc(data) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       const processedData = `${data} - processed Second`;
+//       console.log(`Inside the second func`);
+//       resolve(processedData);
+//     }, 1500);
+//   });
+// }
+// async function processedDataWithAsync() {
+//   try {
+//     const data = await callbackHell();
+//     const processedData1 = await firstFunc(data);
+//     const processedData2 = await secondFunc(processedData1);
+//     console.log(`Final result with async/await ${processedData2}`);
+//   } catch (error) {
+//     console.log(`Error: ${error}`);
+//   }
+// }
+// processedDataWithAsync();
+
+//------------Refractor code to use async/await
+
+// console.log("Start");
+
+// function getuserDataFromDB(name) {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       console.log("Getting user Name");
+//       resolve(name); //instead of callback use resolve
+//     }, 2000);
+//   });
+// }
+// function getUserHobbies() {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       console.log("Getting user hobbies...");
+//       resolve(["Reading", "Game", "Code"]); //instead of callback use resolve
+//     }, 2000);
+//   });
+// }
+// // getuserDataFromDB("Lee", (data) => {
+// //   console.log(data);
+// //   getUserHobbies(data, (hobby) => console.log(hobby));
+// // });
+
+// // getuserDataFromDB("lee")
+// //   .then((name) => getUserHobbies(name))
+// //   .then((hobby) => console.log(hobby))
+// //   .catch((err) => console.log(err));
+
+// async function showHobbies() {
+//   try {
+//     const name = await getuserDataFromDB("Lee");
+//     const hobby = await getUserHobbies(name);
+//     console.log(hobby);
+//   } catch (error) {
+//     console.log(`Error: ${error}`);
+//   }
+// }
+// showHobbies();
+// console.log("End");
+
+///+++++++++++++++++++++ How to load the file
+// console.log(fetch("text.txt"));
+//callback
+
+//new promsie
+
+//text method returns promsie
+// if resolved will return text representation of body
+
+//Fetch API promise only rejects when we have network problem
+
+// fetch("text.txt")
+//   .then((res) => {
+//     if (!res.ok) throw Error(res.statusText);
+//     return res.text(); //if there is prob, they show error
+//   })
+//   .then((data) => console.log(data))
+//   .catch((err) => console.log(err));
+
+//async/await
+// const result = document.querySelector(".results");
+
+// async function renderData() {
+//   try {
+//     const response = await fetch("text  .txt");
+//     if (!response.ok) throw Error(response.statusText);
+//     const data = await response.text();
+//     result.textContent = data;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+// renderData();
+
+// const result = document.querySelector(".results");
+// async function renderData() {
+//   try {
+//     const res = await fetch("data.json");
+//     if (!res.ok) throw Error(res.statusText);
+//     const data = await res.json();
+//     result.textContent = data.name;
+//     result.textContent = data.age;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+// renderData();
+
+// const btn = document.querySelector(".btn");
+// btn.addEventListener("click", maekRequest);
+
+// function maekRequest() {
+//   fetch("https://jsonplaceholder.typicode.com/posts/1")
+//     .then((res) => {
+//       if (!res.ok) new Error(res.statusText);
+//       return res.json();
+//     })
+//     .then((data) => {
+//       console.log(data);
+//       document.querySelector(".id").innerHTML = data.id;
+//       document.querySelector(".title").innerHTML = data.title;
+//       document.querySelector(".body").innerHTML = data.body;
+//     })
+//     .catch((error) => console.log(error));
+// }
+
+function parseJSON(jsonString) {
+  try {
+    return JSON.parse(jsonString);
+  } catch (error) {
+    console.log(`Error${error.message}`);
+    return null;
+  }
 }
-function getUserHobbies(name, callback) {
-  setTimeout(() => {
-    console.log(`Hobbies : `);
-    callback(["football", "reading", "singing"]);
-  }, 2000);
-}
-getUserDataFromDB("lee", (data) => {
-  console.log(data);
-  getUserHobbies(data, (hobby) => {
-    console.log(hobby);
-  });
-});
-console.log("End");
+const validJSON = '{"name": "Lee","Age":19}';
+// const invalidJSON = `{"name": "Lee","Age":19,}`
+const result1 = parseJSON(validJSON);
+console.log(result1);
